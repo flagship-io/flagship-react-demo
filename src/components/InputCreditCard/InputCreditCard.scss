@@ -1,0 +1,25 @@
+@import "../../styles/variables";
+
+.input-credit-card {
+  background: $input-background;
+  display: flex;
+  padding: 15px;
+  align-items: center;
+  i {
+    font-size: 1.5em;
+    color: $text-color;
+  }
+  &:focus-within {
+    background: #e5e4e4;
+  }
+  input {
+    border: none;
+    background: none;
+    width: 100%;
+    font-size: 1em;
+    &:focus-visible {
+      border: none;
+      outline: none;
+    }
+  }
+}
