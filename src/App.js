@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { FlagshipProvider } from "@flagship.io/react-sdk";
+import Header from "./components/Header/Header";
+import Payment from './components/Payment/Payment'
+
 
 function App() {
+  let searchParams = new URL(window.location).searchParams
+  const envId = searchParams.get('envId') || process.env.REACT_APP_ENV_ID
+  const apiKey = searchParams.get('apiKey') || process.env.REACT_APP_API_KEY
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FlagshipProvider
+      envId={envId}
+      apiKey={apiKey}
+    >
+      <Header />
+      <Payment />
+    </FlagshipProvider>
   );
 }
 
