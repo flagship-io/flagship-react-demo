@@ -1219,10 +1219,10 @@
     follow-redirects "^1.15.1"
     node-fetch "^2.6.7"
 
-"@flagship.io/react-sdk@^3.0.9":
-  version "3.0.9"
-  resolved "https://registry.yarnpkg.com/@flagship.io/react-sdk/-/react-sdk-3.0.9.tgz#f265932da36d3d10e32fb96526d3fbea71255c03"
-  integrity sha512-PuCzop716Bno4th3v7bxTFzOCJI1gyF/RLqw6dtwN6lkZptnwpDnJ4E0JFMUfTiZzyUno6F1r3wHuhdWdzoNuA==
+"@flagship.io/react-sdk@^3.0.10":
+  version "3.0.10"
+  resolved "https://registry.yarnpkg.com/@flagship.io/react-sdk/-/react-sdk-3.0.10.tgz#a794cb285231d79b965ed962cf9c5e352b632066"
+  integrity sha512-Spz+ZHUvUAm3ECdJR5zAZ2dBLCeCWI30iEpjrBy78CScGaBHt0xYa91pJWoWUa9j1cSHkFc32A+L+B9pPST5jQ==
   dependencies:
     "@flagship.io/js-sdk" "^3.0.12"
     core-js "^3.24.1"
