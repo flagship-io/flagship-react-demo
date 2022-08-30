@@ -1,5 +1,6 @@
 import { FlagshipProvider } from "@flagship.io/react-sdk";
 import Header from "./components/Header/Header";
+import Loader from "./components/loader/Loader";
 import Payment from './components/Payment/Payment'
 
 
@@ -11,6 +12,8 @@ function App() {
     <FlagshipProvider
       envId={envId}
       apiKey={apiKey}
+      visitorData={{}}
+      loadingComponent={<Loader />}
     >
       <Header />
       <Payment />

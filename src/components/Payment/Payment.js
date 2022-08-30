@@ -1,9 +1,13 @@
+import { useFsFlag } from '@flagship.io/react-sdk'
 import InputCreditCard from '../InputCreditCard/InputCreditCard'
 import './Payment.scss'
 
 
 function Payment() {
-
+    const featurePaymentPaypalEnable = useFsFlag("feature_payment_paypal_enable", true)
+    const featurePaymentApplePayEnable = useFsFlag("feature_payment_applePay_enable", false)
+    const featurePaymentGooglePayEnable = useFsFlag("feature_payment_googlePay_enable", false)
+    const paymentCtaPrefixText = useFsFlag("payment_cta_prefix_text", "Pay")
     return (
         <div className="payment">
             <div className='payment-info row'>
@@ -26,16 +30,20 @@ function Payment() {
             <div className='row'>
                 Other payment methods
             </div>
-            <div>
-                <button className="apple-pay">
+            <div className='payment-btn-container'>
+                {featurePaymentApplePayEnable.getValue() && <button className="apple-pay">
                     <i className="fa-brands fa-apple-pay"></i>
-                </button>
-                <div className="google-pay">
-                    <i className="fa-brands fa-google-pay"></i>
-                </div>
-                <div className="paypal-pay">
-                    <i className="fa-brands fa-paypal"></i>
-                </div>
+                </button>}
+                {featurePaymentGooglePayEnable.getValue() && <button className="google-pay">
+                    <img src='google-pay.svg' alt='google play' />
+                </button>}
+                {featurePaymentPaypalEnable.getValue() && <button className="paypal-pay">
+                    <img src='paypal.svg' alt='paypal' />
+                </button>}
+            </div>
+
+            <div>
+                <button className='pay-btn'>{paymentCtaPrefixText.getValue()} 50.00 $</button>
             </div>
         </div>
     )
