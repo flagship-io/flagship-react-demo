@@ -32,6 +32,10 @@
     justify-content: center;
     align-items: center;
     border: none;
+    &:active {
+      opacity: 0.8;
+    }
+    cursor: pointer;
   }
   .apple-pay {
     @include btn-pay;
@@ -41,6 +45,9 @@
       color: white;
       font-size: 2.5em;
     }
+    &:hover {
+      background: #414141;
+    }
   }
   .google-pay {
     @include btn-pay;
@@ -48,12 +55,18 @@
     img {
       height: 47%;
     }
+    &:hover {
+      background: #414141;
+    }
   }
   .paypal-pay {
     @include btn-pay;
     background: #ccecff;
     img {
       height: 47%;
+    }
+    &:hover {
+      background: #c0e4f8;
     }
   }
   .payment-btn-container {
@@ -69,5 +82,18 @@
     border-radius: 6px;
     font-weight: bold;
     border: none;
+    cursor: pointer;
+    &:active {
+      opacity: 0.8;
+    }
+    &:hover {
+      background: $primary-green;
+    }
+    &:disabled {
+      opacity: 1;
+    }
+  }
+  .credit-card-pay-container {
+    margin-top: 60px;
   }
 }
