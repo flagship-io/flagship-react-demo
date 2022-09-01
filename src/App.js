@@ -16,6 +16,7 @@ function App() {
       envId={envId}
       apiKey={apiKey}
       visitorData={{
+        // id:"put_your_visitor_id", // if not set, the SDK will generate one 
         context: {
           osName
         }

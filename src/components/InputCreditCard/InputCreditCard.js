@@ -1,10 +1,13 @@
 
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './InputCreditCard.scss';
 
+
 function InputCreditCard({ onValidCreditCard }) {
+
     const [creditCardNumber, setCreditCardNumber] = useState("")
     const hasValidCard = useRef(false)
+
     const onTextChange = (e) => {
         const value = e.target.value.replace(/\D+/g, "")
         const creditCard = `${value.slice(0, 4)} ${value.slice(4, 8)} ${value.slice(8, 12)} ${value.slice(12, 19)}`.trim()
@@ -19,6 +22,7 @@ function InputCreditCard({ onValidCreditCard }) {
             }
         }
     }
+
     return (
         <div className='input-credit-card'>
             <i className='fa fa-credit-card' />
@@ -33,4 +37,4 @@ function InputCreditCard({ onValidCreditCard }) {
     )
 }
 
-export default InputCreditCard
+export default React.memo(InputCreditCard)

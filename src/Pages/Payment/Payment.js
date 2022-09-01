@@ -1,5 +1,5 @@
 import { HitType, useFlagship, useFsFlag } from '@flagship.io/react-sdk'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import InputCreditCard from '../../components/InputCreditCard/InputCreditCard'
 import { useNavigate } from "react-router-dom";
 import './Payment.scss'
@@ -32,6 +32,8 @@ function Payment() {
     const [hasValidCreditCard, setHasValidCreditCard] = useState(false)
     const [orderNumber] = useState(Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000)
     const paymentAmount = "50.00"
+
+    //Getting flags
     const featurePaymentPaypalEnable = useFsFlag("feature_payment_paypal_enable", true)
     const featurePaymentApplePayEnable = useFsFlag("feature_payment_applePay_enable", false)
     const featurePaymentGooglePayEnable = useFsFlag("feature_payment_googlePay_enable", false)
@@ -54,9 +56,9 @@ function Payment() {
         navigate('payment-success')
     }
 
-    const onValidCreditCard = (creditCard) => {
+    const onValidCreditCard = useCallback((creditCard) => {
         setHasValidCreditCard(!!creditCard)
-    }
+    }, [])
 
     return (
         <div className="payment">
