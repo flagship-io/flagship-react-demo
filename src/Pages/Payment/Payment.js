@@ -41,6 +41,9 @@ function Payment() {
     const paymentCtaEnabledColor = useFsFlag("payment_cta_enabled_color", "#F2F2F2")
     const paymentCtaDisabledColor = useFsFlag("payment_cta_disabled_color", "#F2F2F2")
 
+    const hasOtherPaymentMethod = featurePaymentPaypalEnable.getValue() ||
+        featurePaymentApplePayEnable.getValue() || featurePaymentGooglePayEnable.getValue()
+
     const fs = useFlagship()
     const navigate = useNavigate()
 
@@ -78,27 +81,32 @@ function Payment() {
                 <InputCreditCard onValidCreditCard={onValidCreditCard} />
             </div>
 
-            <hr />
-            <div className='row small-text'>
-                Other payment methods
-            </div>
-            <div className='payment-btn-container'>
-                {featurePaymentApplePayEnable.getValue() && <button className="apple-pay" onClick={() => {
-                    onPaymentSuccess("Apple pay")
-                }}>
-                    <i className="fa-brands fa-apple-pay"></i>
-                </button>}
-                {featurePaymentGooglePayEnable.getValue() && <button className="google-pay" onClick={() => {
-                    onPaymentSuccess("Google pay")
-                }}>
-                    <img src='google-pay.svg' alt='google play' />
-                </button>}
-                {featurePaymentPaypalEnable.getValue() && <button className="paypal-pay" onClick={() => {
-                    onPaymentSuccess("Paypal")
-                }}>
-                    <img src='paypal.svg' alt='paypal' />
-                </button>}
-            </div>
+
+            {hasOtherPaymentMethod &&
+                <>
+                    <hr />
+                    <div className='row small-text'>
+                        Other payment methods
+                    </div>
+                    <div className='payment-btn-container'>
+                        {featurePaymentApplePayEnable.getValue() && <button className="apple-pay" onClick={() => {
+                            onPaymentSuccess("Apple pay")
+                        }}>
+                            <i className="fa-brands fa-apple-pay"></i>
+                        </button>}
+                        {featurePaymentGooglePayEnable.getValue() && <button className="google-pay" onClick={() => {
+                            onPaymentSuccess("Google pay")
+                        }}>
+                            <img src='google-pay.svg' alt='google play' />
+                        </button>}
+                        {featurePaymentPaypalEnable.getValue() && <button className="paypal-pay" onClick={() => {
+                            onPaymentSuccess("Paypal")
+                        }}>
+                            <img src='paypal.svg' alt='paypal' />
+                        </button>}
+                    </div>
+                </>
+            }
 
             <div className='credit-card-pay-container'>
                 <PayButton
