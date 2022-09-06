@@ -21,11 +21,18 @@
   hr {
     background: $input-background;
   }
-
-  @mixin btn-pay {
-    width: 48%;
-    height: 40px;
+  .payment-btn-container {
     display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    align-items: stretch;
+    height: 40px;
+    column-gap: 1em;
+  }
+  @mixin btn-pay {
+    //box-sizing: border-box;
+    display: flex;
+    flex-grow: 1;
     border-radius: 6px;
     justify-content: center;
     align-items: center;
@@ -66,12 +73,6 @@
     &:hover {
       background: #c0e4f8;
     }
-  }
-  .payment-btn-container {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 15px 0 15px 0;
-    justify-content: space-between;
   }
   .pay-btn {
     width: 100%;
