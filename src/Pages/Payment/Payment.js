@@ -77,7 +77,7 @@ function Payment() {
                 <div className='price'>{paymentAmount} $</div>
             </div>
             <div className='credit-card-row'>
-                <div className='small-text'>Pay by credit card</div>
+                <div className='small-text mt-5'>Pay by credit card</div>
                 <InputCreditCard onValidCreditCard={onValidCreditCard} />
             </div>
 

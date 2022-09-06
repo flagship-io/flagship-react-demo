@@ -24,4 +24,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 <br/>
 
+## [Demo](https://flagship-react-demo.netlify.app/?envId=ENV_ID&apiKey=API_KEY)
+
+<br/>
+
 ## CodeSandbox [here](https://githubbox.com/flagship-io/flagship-react-demo)
