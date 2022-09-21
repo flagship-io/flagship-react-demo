@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto");
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/fontawesome.min.css");
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/regular.min.css");
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/brands.min.css");
+@import "./fontawesome/scss/fontawesome.scss";
+@import "./fontawesome/scss/solid.scss";
+@import "./fontawesome/scss/brands.scss";
 @import "variables";
 
 #root {
@@ -30,7 +30,9 @@ body {
   margin-bottom: 5px;
 }
 .main {
-  width: 360px;
+  @media only screen and (min-width: 768px) {
+    width: 360px;
+  }
   margin: auto;
   padding: 20px;
 }
