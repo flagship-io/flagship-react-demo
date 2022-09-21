@@ -1,7 +1,7 @@
 import { HitType, useFlagship, useFsFlag } from '@flagship.io/react-sdk'
 import { useCallback, useState } from 'react'
 import InputCreditCard from '../../components/InputCreditCard/InputCreditCard'
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import './Payment.scss'
 import styled from 'styled-components'
 
@@ -56,7 +56,7 @@ function Payment() {
             currency: "USD",
             paymentMethod
         })
-        navigate('payment-success')
+        navigate('/payment-success')
     }
 
     const onValidCreditCard = useCallback((creditCard) => {
@@ -117,6 +117,10 @@ function Payment() {
                         onPaymentSuccess("Credit-card")
                     }}
                 >{paymentCtaPrefixText.getValue()} {paymentAmount} $</PayButton>
+            </div>
+
+            <div className='credential-container'>
+                <NavLink to="/">Change credential</NavLink>
             </div>
         </div>
     )
