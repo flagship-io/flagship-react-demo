@@ -3,7 +3,7 @@ import styles from './Header.module.scss'
 
 function Header() {
     const paymentHeaderTitle = useFsFlag("payment_header_title_text", "Demo app")
-    const paymentHeaderColor = useFsFlag("payment_header_color", "red")
+    const paymentHeaderColor = useFsFlag("payment_header_color", "#ff4b1f")
     return (
         <div className={styles.header} style={{ background: paymentHeaderColor.getValue() }}>
             <div className={styles.title}>{paymentHeaderTitle.getValue()}</div>

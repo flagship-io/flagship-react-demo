@@ -8,7 +8,7 @@ function Success() {
                 <img src='/credit-card-check.svg' alt='credit card' />
             </div>
             <div className={styles.message}>Payment successfully completed</div>
-            <Link to="/"><i className='fa-regular fa-arrow-left-long' /> Go back to the store</Link>
+            <Link to="/payment"><i className='fa-regular fa-arrow-left-long' /> Go back to the store</Link>
         </div>
     )
 }
