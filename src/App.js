@@ -9,10 +9,16 @@ import { osName } from 'react-device-detect'
 import React, { useState } from "react";
 
 
+export const FS_DEMO_CREDENTIAL = "FS_DEMO_CREDENTIAL"
+
 export const appContext = React.createContext({ credential: { envId: "", apiKey: "" }, setCredential: () => { } })
 
 function App() {
-  const [credential, setCredential] = useState({ envId: "", apiKey: "" })
+  const [credential, setCredential] = useState(() => {
+    const storeCredential = JSON.parse(localStorage.getItem(FS_DEMO_CREDENTIAL))
+    return storeCredential ?? { envId: "", apiKey: "" }
+  })
+
   return (
     <appContext.Provider value={{ credential, setCredential }}>
       <FlagshipProvider

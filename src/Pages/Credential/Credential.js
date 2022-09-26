@@ -1,6 +1,6 @@
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { appContext } from '../../App'
+import { appContext, FS_DEMO_CREDENTIAL } from '../../App'
 import './Credential.scss'
 
 const FormInput = ({ name, label, value, onChange }) => {
@@ -15,22 +15,17 @@ const FormInput = ({ name, label, value, onChange }) => {
 }
 
 export default function Credential() {
-    const [data, setData] = useState({
-        apiKey: "",
-        envId: ""
-    })
 
 
     const navigate = useNavigate();
     const context = useContext(appContext)
 
-    useEffect(() => {
-        setData(context.credential)
-    }, [context])
+    const [data, setData] = useState(context.credential)
 
     const onSubmit = (e) => {
         e.preventDefault();
         context.setCredential(data)
+        localStorage.setItem(FS_DEMO_CREDENTIAL, JSON.stringify(data))
         navigate('payment')
     }
     return (
