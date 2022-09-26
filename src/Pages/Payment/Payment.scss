@@ -32,7 +32,7 @@
     height: 40px;
     column-gap: 1em;
   }
-  @mixin btn-pay {
+  @mixin btn-pay-mixin {
     display: flex;
     flex-grow: 1;
     border-radius: 6px;
@@ -46,7 +46,7 @@
     cursor: pointer;
   }
   .apple-pay {
-    @include btn-pay;
+    @include btn-pay-mixin;
     background: #111111;
 
     i {
@@ -58,7 +58,7 @@
     }
   }
   .google-pay {
-    @include btn-pay;
+    @include btn-pay-mixin;
     background: #111111;
     img {
       height: 47%;
@@ -68,7 +68,7 @@
     }
   }
   .paypal-pay {
-    @include btn-pay;
+    @include btn-pay-mixin;
     background: #ccecff;
     img {
       height: 47%;
