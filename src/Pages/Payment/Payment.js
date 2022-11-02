@@ -67,7 +67,7 @@ function Payment() {
         <div className="payment">
             <div className='payment-info row'>
                 <div>
-                    Rubber Duck
+                    Product Name
                 </div>
                 <div>
                     Order N°{orderNumber}
