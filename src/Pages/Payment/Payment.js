@@ -34,7 +34,7 @@ function Payment() {
     const paymentAmount = "50.00"
 
     //Getting flags
-    const featurePaymentPaypalEnable = useFsFlag("feature_payment_paypal_enable", true)
+    const featurePaymentPaypalEnable = useFsFlag("feature_payment_paypal_enable", false)
     const featurePaymentApplePayEnable = useFsFlag("feature_payment_applePay_enable", false)
     const featurePaymentGooglePayEnable = useFsFlag("feature_payment_googlePay_enable", false)
     const paymentCtaPrefixText = useFsFlag("payment_cta_prefix_text", "Pay")
