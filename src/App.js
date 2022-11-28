@@ -7,7 +7,7 @@ import Success from "./Pages/Success/Success";
 import Credential from "./Pages/Credential/Credential";
 import { osName } from 'react-device-detect'
 import React, { useState } from "react";
-
+import SideBar from "./components/SideBar/SideBar";
 
 export const FS_DEMO_CREDENTIAL = "FS_DEMO_CREDENTIAL"
 
@@ -34,10 +34,10 @@ function App() {
       >
         <Header />
         <Routes>
-          <Route index path="/" element={<Credential />} />
-          <Route path="/payment" element={<Payment />} />
+          <Route path="/" element={<Payment />} />
           <Route path="payment-success" element={<Success />} />
         </Routes>
+        <SideBar />
       </FlagshipProvider>
     </appContext.Provider>
   );
