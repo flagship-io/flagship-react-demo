@@ -3,15 +3,26 @@
 .fs-side-menu {
   position: fixed;
   z-index: 2000;
-  left: -420px;
+  left: -30%;
   top: 0;
   bottom: 0;
-  width: 420px;
+  width: 30%;
   overflow: visible;
   transition: 1s ease left;
-  padding: 10px;
+  padding: 20px;
   background-color: #272727;
   color: #fff !important;
+  box-sizing: border-box;
+
+  @media only screen and (max-width: 992px) {
+    left: -40%;
+    width: 40%;
+  }
+
+  @media only screen and (max-width: 576px) {
+    left: -80%;
+    width: 80%;
+  }
 
   &.opened {
     display: block;
@@ -21,17 +32,19 @@
 
   .fs-side-menu-open {
     transform: rotate(90deg);
-    width: 80px;
+    width: 90px;
     position: absolute;
-    right: -60px;
+    right: -65px;
     top: 50%;
     margin-top: -40px;
     background-color: #272727;
-    -webkit-appearance: none;
     border: none;
     color: #fff;
     padding: 10px;
     cursor: pointer;
+    @media only screen and (max-width: 576px) {
+      top: 80%;
+    }
   }
 
   .title {

@@ -28,13 +28,16 @@ export default function SideBar() {
         e.preventDefault();
         context.setCredential(fsData)
         localStorage.setItem(FS_DEMO_CREDENTIAL, JSON.stringify(fsData))
+        window.location.reload()
     }
 
     return (
         <div className={`fs-side-menu ${isOpen ? "opened" : null} `}>
             <div className="inner">
 
-                <button className="fs-side-menu-open" onClick={onSideMenuToggle}>FlagShip</button>
+                <button className="fs-side-menu-open" onClick={onSideMenuToggle}>
+                    <i className={`fa-regular fa-arrow-${isOpen ? "down" : "up"}`}></i>
+                    Credentials</button>
                 <div className='title'>
                     Flagship Credentials
                 </div>
@@ -45,9 +48,10 @@ export default function SideBar() {
                     <FormInput name="envId" label="Env ID" value={fsData.envId} onChange={(value) => {
                         setFsData(item => ({ ...item, envId: value }))
                     }} />
-                    <button>Submit</button>
+                    <button>
+                        Validate</button>
                 </form>
 
             </div>
-        </div>)
+        </div >)
 }
