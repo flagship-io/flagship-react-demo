@@ -37,16 +37,17 @@ export default function SideBar() {
 
                 <button className="fs-side-menu-open" onClick={onSideMenuToggle}>
                     <i className={`fa-regular fa-arrow-${isOpen ? "down" : "up"}`}></i>
-                    Credentials</button>
+                    <div>Flagship</div>
+                </button>
                 <div className='title'>
                     Flagship Credentials
                 </div>
                 <form method="post" onSubmit={onSubmit}>
-                    <FormInput name="apiKey" label="Api Key" value={fsData.apiKey} onChange={(value) => {
-                        setFsData(item => ({ ...item, apiKey: value }))
-                    }} />
                     <FormInput name="envId" label="Env ID" value={fsData.envId} onChange={(value) => {
                         setFsData(item => ({ ...item, envId: value }))
+                    }} />
+                    <FormInput name="apiKey" label="Api Key" value={fsData.apiKey} onChange={(value) => {
+                        setFsData(item => ({ ...item, apiKey: value }))
                     }} />
                     <button>
                         Validate</button>
