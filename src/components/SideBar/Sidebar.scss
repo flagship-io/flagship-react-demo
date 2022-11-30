@@ -1,5 +1,52 @@
 @import "../../styles/variables";
-.credential {
+
+.fs-side-menu {
+  position: fixed;
+  z-index: 2000;
+  left: -30%;
+  top: 0;
+  bottom: 0;
+  width: 30%;
+  overflow: visible;
+  transition: 1s ease left;
+  padding: 20px;
+  background-color: #272727;
+  color: #fff !important;
+  box-sizing: border-box;
+
+  @media only screen and (max-width: 992px) {
+    left: -40%;
+    width: 40%;
+  }
+
+  @media only screen and (max-width: 576px) {
+    left: -80%;
+    width: 80%;
+  }
+
+  &.opened {
+    display: block;
+    left: 0;
+    transition: 1s ease left;
+  }
+
+  .fs-side-menu-open {
+    transform: rotate(90deg);
+    width: 90px;
+    position: absolute;
+    right: -72px;
+    top: 50%;
+    margin-top: -40px;
+    background-color: #272727;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    @media only screen and (max-width: 576px) {
+      top: 80%;
+    }
+  }
+
   .title {
     text-align: center;
     margin-top: 50px;

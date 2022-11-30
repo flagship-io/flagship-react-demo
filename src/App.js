@@ -4,10 +4,8 @@ import Header from "./components/Header/Header";
 import Loader from "./components/loader/Loader";
 import Payment from './Pages/Payment/Payment'
 import Success from "./Pages/Success/Success";
-import Credential from "./Pages/Credential/Credential";
 import { osName } from 'react-device-detect'
 import React, { useState } from "react";
-
 
 export const FS_DEMO_CREDENTIAL = "FS_DEMO_CREDENTIAL"
 
@@ -34,8 +32,7 @@ function App() {
       >
         <Header />
         <Routes>
-          <Route index path="/" element={<Credential />} />
-          <Route path="/payment" element={<Payment />} />
+          <Route path="/" element={<Payment />} />
           <Route path="payment-success" element={<Success />} />
         </Routes>
       </FlagshipProvider>
