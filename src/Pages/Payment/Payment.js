@@ -120,6 +120,10 @@ function Payment() {
                         }}
                     >{paymentCtaPrefixText.getValue()} {paymentAmount} $</PayButton>
                 </div>
+
+                <div className='alert alert-warning alert-box'>
+                    There is small latency between Flagship platform actions and it’s propagation, wait 10 to 60 seconds until modifications appears
+                </div>
             </div>
             <SideBar />
         </>
