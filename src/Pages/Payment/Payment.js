@@ -122,7 +122,7 @@ function Payment() {
                 </div>
 
                 <div className='alert alert-warning alert-box'>
-                    There is small latency between Flagship platform actions and it’s propagation, wait 10 to 60 seconds until modifications appears
+                    When modifications are made on the platform, this can take up to 60 seconds to display on the page while the servers synchronize.
                 </div>
             </div>
             <SideBar />
