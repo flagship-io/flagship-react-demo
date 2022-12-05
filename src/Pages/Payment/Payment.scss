@@ -129,4 +129,12 @@
     right: 0;
     margin: 0px 20px 20px 20px;
   }
+  .product-name {
+    // font-weight: bold;
+    font-size: 1.5rem;
+  }
+  .product-code {
+    display: flex;
+    align-items: center;
+  }
 }
