@@ -9,26 +9,26 @@ import React, { useState } from "react";
 
 export const FS_DEMO_CREDENTIAL = "FS_DEMO_CREDENTIAL"
 
-export const appContext = React.createContext({ credential: { envId: "", apiKey: "" }, setCredential: () => { } })
+export const appContext = React.createContext({ fsData: { envId: "", apiKey: "", visitorId: "" }, setFsData: () => { } })
 
 function App() {
-  const [credential, setCredential] = useState(() => {
-    const storeCredential = JSON.parse(localStorage.getItem(FS_DEMO_CREDENTIAL))
-    return storeCredential ?? { envId: "", apiKey: "" }
+  const [fsData, setFsData] = useState(() => {
+    const storeFsData = JSON.parse(localStorage.getItem(FS_DEMO_CREDENTIAL))
+    return storeFsData ?? { envId: "", apiKey: "", visitorId: "" }
   })
 
   return (
-    <appContext.Provider value={{ credential, setCredential }}>
+    <appContext.Provider value={{ fsData, setFsData: setFsData }}>
       <FlagshipProvider
-        envId={credential.envId}
-        apiKey={credential.apiKey}
+        envId={fsData.envId}
+        apiKey={fsData.apiKey}
         visitorData={{
-          // id:"put_your_visitor_id", // if not set, the SDK will generate one 
+          id: fsData.visitorId, // if empty, the SDK will generate one 
           context: {
             osName
           }
         }}
-        loadingComponent={(credential.apiKey && credential.envId) && <Loader />}
+        loadingComponent={(fsData.apiKey && fsData.envId) && <Loader />}
       >
         <Header />
         <Routes>
