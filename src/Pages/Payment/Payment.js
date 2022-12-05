@@ -68,10 +68,10 @@ function Payment() {
         <>
             <div className="payment">
                 <div className='payment-info row'>
-                    <div>
-                        Product Name
+                    <div className='product-name'>
+                        T-shirt
                     </div>
-                    <div>
+                    <div className='product-code'>
                         Order N°{orderNumber}
                     </div>
                 </div>
@@ -119,6 +119,10 @@ function Payment() {
                             onPaymentSuccess("Credit-card")
                         }}
                     >{paymentCtaPrefixText.getValue()} {paymentAmount} $</PayButton>
+                </div>
+
+                <div className='alert alert-warning alert-box'>
+                    When modifications are made on the platform, this can take up to 60 seconds to display on the page while the servers synchronize.
                 </div>
             </div>
             <SideBar />
