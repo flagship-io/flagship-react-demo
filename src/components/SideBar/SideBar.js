@@ -1,12 +1,13 @@
-import { useState, useContext } from 'react'
+import { useFlagship } from '@flagship.io/react-sdk'
+import { useState, useContext, useEffect } from 'react'
 import { appContext, FS_DEMO_CREDENTIAL } from '../../App'
 import './Sidebar.scss'
 
-const FormInput = ({ name, label, value, onChange }) => {
+const FormInput = ({ name, label, value, required, onChange }) => {
     return (
         <div>
             <label htmlFor={name} >{label}</label>
-            <input required name={name} value={value} onChange={(e) => {
+            <input required={required} name={name} value={value} onChange={(e) => {
                 onChange(e.target.value)
             }} />
         </div>
@@ -18,7 +19,13 @@ export default function SideBar() {
     const [isOpen, setIsOpen] = useState(false)
 
     const context = useContext(appContext)
-    const [fsData, setFsData] = useState(context.credential)
+    const [fsData, setFsData] = useState(context.fsData)
+
+    const fs = useFlagship()
+
+    useEffect(() => {
+        setFsData(item => ({ ...item, visitorId: fs.visitorId }))
+    }, [fs.visitorId])
 
     function onSideMenuToggle() {
         setIsOpen(x => !x)
@@ -26,8 +33,9 @@ export default function SideBar() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        context.setCredential(fsData)
-        localStorage.setItem(FS_DEMO_CREDENTIAL, JSON.stringify(fsData))
+        const data = { ...fsData, hasVisitorIdField: true }
+        context.setFsData(data)
+        localStorage.setItem(FS_DEMO_CREDENTIAL, JSON.stringify(data))
         window.location.reload()
     }
 
@@ -43,12 +51,15 @@ export default function SideBar() {
                     Flagship Credentials
                 </div>
                 <form method="post" onSubmit={onSubmit}>
-                    <FormInput name="envId" label="Env ID" value={fsData.envId} onChange={(value) => {
+                    <FormInput name="envId" label="Env ID" value={fsData.envId} required={true} onChange={(value) => {
                         setFsData(item => ({ ...item, envId: value }))
                     }} />
-                    <FormInput name="apiKey" label="Api Key" value={fsData.apiKey} onChange={(value) => {
+                    <FormInput name="apiKey" label="Api Key" value={fsData.apiKey} required={true} onChange={(value) => {
                         setFsData(item => ({ ...item, apiKey: value }))
                     }} />
+                    {fsData.hasVisitorIdField && <FormInput name="visitorId" label="Visitor ID" value={fsData.visitorId} onChange={(value) => {
+                        setFsData(item => ({ ...item, visitorId: value }))
+                    }} />}
                     <button>
                         Validate</button>
                 </form>
