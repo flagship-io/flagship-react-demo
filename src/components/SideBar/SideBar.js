@@ -1,4 +1,5 @@
-import { useState, useContext } from 'react'
+import { useFlagship } from '@flagship.io/react-sdk'
+import { useState, useContext, useEffect } from 'react'
 import { appContext, FS_DEMO_CREDENTIAL } from '../../App'
 import './Sidebar.scss'
 
@@ -20,14 +21,21 @@ export default function SideBar() {
     const context = useContext(appContext)
     const [fsData, setFsData] = useState(context.fsData)
 
+    const fs = useFlagship()
+
+    useEffect(() => {
+        setFsData(item => ({ ...item, visitorId: fs.visitorId }))
+    }, [fs.visitorId])
+
     function onSideMenuToggle() {
         setIsOpen(x => !x)
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
-        context.setFsData(fsData)
-        localStorage.setItem(FS_DEMO_CREDENTIAL, JSON.stringify(fsData))
+        const data = { ...fsData, hasVisitorIdField: true }
+        context.setFsData(data)
+        localStorage.setItem(FS_DEMO_CREDENTIAL, JSON.stringify(data))
         window.location.reload()
     }
 
@@ -49,9 +57,9 @@ export default function SideBar() {
                     <FormInput name="apiKey" label="Api Key" value={fsData.apiKey} required={true} onChange={(value) => {
                         setFsData(item => ({ ...item, apiKey: value }))
                     }} />
-                    <FormInput name="visitorId" label="Visitor ID" value={fsData.visitorId} onChange={(value) => {
+                    {fsData.hasVisitorIdField && <FormInput name="visitorId" label="Visitor ID" value={fsData.visitorId} onChange={(value) => {
                         setFsData(item => ({ ...item, visitorId: value }))
-                    }} />
+                    }} />}
                     <button>
                         Validate</button>
                 </form>

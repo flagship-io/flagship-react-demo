@@ -9,12 +9,12 @@ import React, { useState } from "react";
 
 export const FS_DEMO_CREDENTIAL = "FS_DEMO_CREDENTIAL"
 
-export const appContext = React.createContext({ fsData: { envId: "", apiKey: "", visitorId: "" }, setFsData: () => { } })
+export const appContext = React.createContext({ fsData: { envId: "", apiKey: "", visitorId: "", hasVisitorIdField: false }, setFsData: () => { } })
 
 function App() {
   const [fsData, setFsData] = useState(() => {
     const storeFsData = JSON.parse(localStorage.getItem(FS_DEMO_CREDENTIAL))
-    return storeFsData ?? { envId: "", apiKey: "", visitorId: "" }
+    return storeFsData ?? { envId: "", apiKey: "", visitorId: "", hasVisitorIdField: false }
   })
 
   return (
