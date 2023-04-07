@@ -200,7 +200,7 @@
             "resourceVariable": "f4",
             "data": {
                 "name": "payment_header_title_text",
-                "type": "boolean",
+                "type": "string",
                 "description": "created by CLI resource loader",
                 "source": "cli"
             }
@@ -210,7 +210,7 @@
             "resourceVariable": "f5",
             "data": {
                 "name": "payment_cta_prefix_text",
-                "type": "boolean",
+                "type": "string",
                 "description": "created by CLI resource loader",
                 "source": "cli"
             }
@@ -220,7 +220,7 @@
             "resourceVariable": "f6",
             "data": {
                 "name": "payment_header_color",
-                "type": "boolean",
+                "type": "string",
                 "description": "created by CLI resource loader",
                 "source": "cli"
             }
@@ -230,7 +230,7 @@
             "resourceVariable": "f7",
             "data": {
                 "name": "payment_cta_enabled_color",
-                "type": "boolean",
+                "type": "string",
                 "description": "created by CLI resource loader",
                 "source": "cli"
             }
@@ -240,7 +240,7 @@
             "resourceVariable": "f8",
             "data": {
                 "name": "payment_cta_disabled_color",
-                "type": "boolean",
+                "type": "string",
                 "description": "created by CLI resource loader",
                 "source": "cli"
             }
