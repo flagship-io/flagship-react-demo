@@ -65,9 +65,6 @@ export default function SideBar() {
       }
     );
   };
-
-  console.log("fsData", JSON.stringify(fsData));
-
   return (
     <div className={`fs-side-menu ${isOpen ? "opened" : null} `}>
       <div className="inner">
