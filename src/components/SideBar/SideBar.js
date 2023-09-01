@@ -53,17 +53,13 @@ export default function SideBar() {
     context.setFsData(data);
     localStorage.setItem(FS_DEMO_CREDENTIAL, JSON.stringify(data));
     // eslint-disable-next-line no-undef
-    analytics.identify(
-      data.envId,
-      {
+    analytics.track("valid button", {
+        envId:data.envId,
         apiKey: data.apiKey,
         visitorId: data.visitorId,
-      },
-      {},
-      () => {
-        window.location.reload();
-      }
-    );
+      });
+
+    window.location.reload();
   };
   return (
     <div className={`fs-side-menu ${isOpen ? "opened" : null} `}>
