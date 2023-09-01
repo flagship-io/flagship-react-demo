@@ -1,29 +1,3 @@
-# Flagship react-demo-app
-
-## Setup
-
-In the project directory, you can run:
-
-```bash
- yarn start
-```
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-<br/>
-
-## [Demo](https://flagship-react-demo.netlify.app)
-
-<br/>
-
-## CodeSandbox [here](https://githubbox.com/flagship-io/flagship-react-demo)
-
-## Flagship resource used for this demo 
-
-Here's is a file containing all Flagship resources.
-
-```
 {
     "resources": [
         {
@@ -31,7 +5,7 @@ Here's is a file containing all Flagship resources.
             "resourceVariable": "p1",
             "method": "create",
             "data": {
-                "name": "Payment Method Project"
+                "name": "Payment Method Project - Flagship Demo"
             }
         },
         {
@@ -226,7 +200,7 @@ Here's is a file containing all Flagship resources.
             "resourceVariable": "f4",
             "data": {
                 "name": "payment_header_title_text",
-                "type": "boolean",
+                "type": "string",
                 "description": "created by CLI resource loader",
                 "source": "cli"
             }
@@ -236,7 +210,7 @@ Here's is a file containing all Flagship resources.
             "resourceVariable": "f5",
             "data": {
                 "name": "payment_cta_prefix_text",
-                "type": "boolean",
+                "type": "string",
                 "description": "created by CLI resource loader",
                 "source": "cli"
             }
@@ -246,7 +220,7 @@ Here's is a file containing all Flagship resources.
             "resourceVariable": "f6",
             "data": {
                 "name": "payment_header_color",
-                "type": "boolean",
+                "type": "string",
                 "description": "created by CLI resource loader",
                 "source": "cli"
             }
@@ -256,7 +230,7 @@ Here's is a file containing all Flagship resources.
             "resourceVariable": "f7",
             "data": {
                 "name": "payment_cta_enabled_color",
-                "type": "boolean",
+                "type": "string",
                 "description": "created by CLI resource loader",
                 "source": "cli"
             }
@@ -266,7 +240,7 @@ Here's is a file containing all Flagship resources.
             "resourceVariable": "f8",
             "data": {
                 "name": "payment_cta_disabled_color",
-                "type": "boolean",
+                "type": "string",
                 "description": "created by CLI resource loader",
                 "source": "cli"
             }
@@ -291,6 +265,3 @@ Here's is a file containing all Flagship resources.
         }
     ]
 }
-```
-
-To load this resources to your environment, we recommand you to use our [Command Line Interface](https://docs.developers.flagship.io/docs/flagship-command-line-interface) using the [resource](https://docs.developers.flagship.io/docs/cli-resource) command. 
