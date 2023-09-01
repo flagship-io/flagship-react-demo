@@ -57,6 +57,11 @@ function Payment() {
             currency: "USD",
             paymentMethod
         })
+        // eslint-disable-next-line no-undef
+        analytics.track("Payment button", {
+            transactionId: `${orderNumber}`,
+            paymentMethod
+        });
         navigate('/payment-success')
     }
 
