@@ -1,5 +1,5 @@
 import { HitType, useFlagship, useFsFlag } from '@flagship.io/react-sdk'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import InputCreditCard from '../../components/InputCreditCard/InputCreditCard'
 import { useNavigate } from "react-router-dom";
 import './Payment.scss'
@@ -48,6 +48,11 @@ function Payment() {
     const fs = useFlagship()
     const navigate = useNavigate()
 
+    useEffect(()=>{
+        // eslint-disable-next-line no-undef
+        analytics.page(null,"Payment page");
+    }, [])
+
     const onPaymentSuccess = (paymentMethod) => {
         fs.hit.send({
             type: HitType.TRANSACTION,
@@ -57,6 +62,11 @@ function Payment() {
             currency: "USD",
             paymentMethod
         })
+        // eslint-disable-next-line no-undef
+        analytics.track("Payment button", {
+            transactionId: `${orderNumber}`,
+            paymentMethod
+        });
         navigate('/payment-success')
     }
 
