@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import './Payment.scss'
 import styled from 'styled-components'
 import SideBar from '../../components/SideBar/SideBar';
+import React from 'react';
 
 const PayButton = styled.button`
     width: 100%;

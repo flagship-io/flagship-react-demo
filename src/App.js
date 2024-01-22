@@ -26,6 +26,7 @@ function App() {
 
   return (
     <appContext.Provider value={{ fsData, setFsData: setFsData }}>
+      {/*start step 1 block*/}
       <FlagshipProvider
         envId={fsData.envId}
         apiKey={fsData.apiKey}
@@ -43,6 +44,7 @@ function App() {
           <Route path="payment-success" element={<Success />} />
         </Routes>
       </FlagshipProvider>
+      {/*end step 1 block*/}
     </appContext.Provider>
   );
 }
