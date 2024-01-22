@@ -1,4 +1,6 @@
+/*start step 1 import*/
 import { FlagshipProvider } from "@flagship.io/react-sdk";
+/*end step 1 import*/
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Loader from "./components/loader/Loader";
@@ -26,7 +28,7 @@ function App() {
 
   return (
     <appContext.Provider value={{ fsData, setFsData: setFsData }}>
-      {/*start step 1 block*/}
+      {/* start step 1 block */}
       <FlagshipProvider
         envId={fsData.envId}
         apiKey={fsData.apiKey}
@@ -44,7 +46,7 @@ function App() {
           <Route path="payment-success" element={<Success />} />
         </Routes>
       </FlagshipProvider>
-      {/*end step 1 block*/}
+      {/* end step 1 block */}
     </appContext.Provider>
   );
 }

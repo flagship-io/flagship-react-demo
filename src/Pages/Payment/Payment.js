@@ -1,139 +1,174 @@
-import { HitType, useFlagship, useFsFlag } from '@flagship.io/react-sdk'
-import { useCallback, useState } from 'react'
-import InputCreditCard from '../../components/InputCreditCard/InputCreditCard'
+/* start step 2 import */
+import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk";
+/* end step 2 import */
+import { useCallback, useState } from "react";
+import InputCreditCard from "../../components/InputCreditCard/InputCreditCard";
 import { useNavigate } from "react-router-dom";
-import './Payment.scss'
-import styled from 'styled-components'
-import SideBar from '../../components/SideBar/SideBar';
-import React from 'react';
+import "./Payment.scss";
+import styled from "styled-components";
+import SideBar from "../../components/SideBar/SideBar";
+import React from "react";
 
 const PayButton = styled.button`
-    width: 100%;
-    height: 40px;
-    background: ${props => props.paymentCtaEnabledColor};
-    color:white;
-    border-radius: 6px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    &:active {
+  width: 100%;
+  height: 40px;
+  background: ${(props) => props.paymentCtaEnabledColor};
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  &:active {
     opacity: 0.8;
-    }
-    &:hover {
+  }
+  &:hover {
     background: #10882f;
-    }
-    &:disabled {
+  }
+  &:disabled {
     opacity: 1;
-    background: ${props => props.paymentCtaDisabledColor};
-    color:grey;
-    }
+    background: ${(props) => props.paymentCtaDisabledColor};
+    color: grey;
+  }
 `;
 
 function Payment() {
+  const [hasValidCreditCard, setHasValidCreditCard] = useState(false);
+  const [orderNumber] = useState(
+    Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000
+  );
+  const paymentAmount = "50.00";
 
-    const [hasValidCreditCard, setHasValidCreditCard] = useState(false)
-    const [orderNumber] = useState(Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000)
-    const paymentAmount = "50.00"
+  //Getting flags
+  const featurePaymentPaypalEnable = useFsFlag(
+    "feature_payment_paypal_enable",
+    false
+  );
+  const featurePaymentApplePayEnable = useFsFlag(
+    "feature_payment_applePay_enable",
+    false
+  );
+  const featurePaymentGooglePayEnable = useFsFlag(
+    "feature_payment_googlePay_enable",
+    false
+  );
+  const paymentCtaPrefixText = useFsFlag("payment_cta_prefix_text", "Pay");
+  /* start step 2 useFsFlag */
+  const paymentCtaEnabledColor = useFsFlag(
+    "payment_cta_enabled_color",
+    "#F2F2F2"
+  );
+  /* end step 2 useFsFlag */
+  const paymentCtaDisabledColor = useFsFlag(
+    "payment_cta_disabled_color",
+    "#F2F2F2"
+  );
 
-    //Getting flags
-    const featurePaymentPaypalEnable = useFsFlag("feature_payment_paypal_enable", false)
-    const featurePaymentApplePayEnable = useFsFlag("feature_payment_applePay_enable", false)
-    const featurePaymentGooglePayEnable = useFsFlag("feature_payment_googlePay_enable", false)
-    const paymentCtaPrefixText = useFsFlag("payment_cta_prefix_text", "Pay")
-    const paymentCtaEnabledColor = useFsFlag("payment_cta_enabled_color", "#F2F2F2")
-    const paymentCtaDisabledColor = useFsFlag("payment_cta_disabled_color", "#F2F2F2")
+  const hasOtherPaymentMethod =
+    featurePaymentPaypalEnable.getValue() ||
+    featurePaymentApplePayEnable.getValue() ||
+    featurePaymentGooglePayEnable.getValue();
 
-    const hasOtherPaymentMethod = featurePaymentPaypalEnable.getValue() ||
-        featurePaymentApplePayEnable.getValue() || featurePaymentGooglePayEnable.getValue()
+  const fs = useFlagship();
+  const navigate = useNavigate();
 
-    const fs = useFlagship()
-    const navigate = useNavigate()
+  const onPaymentSuccess = (paymentMethod) => {
+    fs.hit.send({
+      type: HitType.TRANSACTION,
+      transactionId: `${orderNumber}`,
+      affiliation: "payment",
+      totalRevenue: Number(paymentAmount),
+      currency: "USD",
+      paymentMethod,
+    });
+    // eslint-disable-next-line no-undef
+    analytics.track("Payment button", {
+      transactionId: `${orderNumber}`,
+      paymentMethod,
+    });
+    navigate("/payment-success");
+  };
 
-    const onPaymentSuccess = (paymentMethod) => {
-        fs.hit.send({
-            type: HitType.TRANSACTION,
-            transactionId: `${orderNumber}`,
-            affiliation: "payment",
-            totalRevenue: Number(paymentAmount),
-            currency: "USD",
-            paymentMethod
-        })
-        // eslint-disable-next-line no-undef
-        analytics.track("Payment button", {
-            transactionId: `${orderNumber}`,
-            paymentMethod
-        });
-        navigate('/payment-success')
-    }
+  const onValidCreditCard = useCallback((creditCard) => {
+    setHasValidCreditCard(!!creditCard);
+  }, []);
 
-    const onValidCreditCard = useCallback((creditCard) => {
-        setHasValidCreditCard(!!creditCard)
-    }, [])
+  return (
+    <>
+      <div className="payment">
+        <div className="payment-info row">
+          <div className="product-name">T-shirt</div>
+          <div className="product-code">Order N°{orderNumber}</div>
+        </div>
+        <div className="payment-price row">
+          <div className="price">{paymentAmount} $</div>
+        </div>
+        <div className="credit-card-row">
+          <div className="small-text mt-5">Pay by credit card</div>
+          <InputCreditCard onValidCreditCard={onValidCreditCard} />
+        </div>
 
-    return (
-        <>
-            <div className="payment">
-                <div className='payment-info row'>
-                    <div className='product-name'>
-                        T-shirt
-                    </div>
-                    <div className='product-code'>
-                        Order N°{orderNumber}
-                    </div>
-                </div>
-                <div className='payment-price row'>
-                    <div className='price'>{paymentAmount} $</div>
-                </div>
-                <div className='credit-card-row'>
-                    <div className='small-text mt-5'>Pay by credit card</div>
-                    <InputCreditCard onValidCreditCard={onValidCreditCard} />
-                </div>
-
-
-                {hasOtherPaymentMethod &&
-                    <>
-                        <hr />
-                        <div className='row small-text'>
-                            Other payment methods
-                        </div>
-                        <div className='payment-btn-container'>
-                            {featurePaymentApplePayEnable.getValue() && <button className="apple-pay" onClick={() => {
-                                onPaymentSuccess("Apple pay")
-                            }}>
-                                <i className="fa-brands fa-apple-pay"></i>
-                            </button>}
-                            {featurePaymentGooglePayEnable.getValue() && <button className="google-pay" onClick={() => {
-                                onPaymentSuccess("Google pay")
-                            }}>
-                                <img src='google-pay.svg' alt='google play' />
-                            </button>}
-                            {featurePaymentPaypalEnable.getValue() && <button className="paypal-pay" onClick={() => {
-                                onPaymentSuccess("Paypal")
-                            }}>
-                                <img src='paypal.svg' alt='paypal' />
-                            </button>}
-                        </div>
-                    </>
-                }
-
-                <div className='credit-card-pay-container'>
-                    <PayButton
-                        paymentCtaEnabledColor={paymentCtaEnabledColor.getValue()}
-                        paymentCtaDisabledColor={paymentCtaDisabledColor.getValue()}
-                        disabled={!hasValidCreditCard}
-                        onClick={() => {
-                            onPaymentSuccess("Credit-card")
-                        }}
-                    >{paymentCtaPrefixText.getValue()} {paymentAmount} $</PayButton>
-                </div>
-
-                <div className='alert alert-warning alert-box'>
-                    When modifications are made on the platform, this can take up to 60 seconds to display on the page while the servers synchronize.
-                </div>
+        {hasOtherPaymentMethod && (
+          <>
+            <hr />
+            <div className="row small-text">Other payment methods</div>
+            <div className="payment-btn-container">
+              {featurePaymentApplePayEnable.getValue() && (
+                <button
+                  className="apple-pay"
+                  onClick={() => {
+                    onPaymentSuccess("Apple pay");
+                  }}
+                >
+                  <i className="fa-brands fa-apple-pay"></i>
+                </button>
+              )}
+              {featurePaymentGooglePayEnable.getValue() && (
+                <button
+                  className="google-pay"
+                  onClick={() => {
+                    onPaymentSuccess("Google pay");
+                  }}
+                >
+                  <img src="google-pay.svg" alt="google play" />
+                </button>
+              )}
+              {featurePaymentPaypalEnable.getValue() && (
+                <button
+                  className="paypal-pay"
+                  onClick={() => {
+                    onPaymentSuccess("Paypal");
+                  }}
+                >
+                  <img src="paypal.svg" alt="paypal" />
+                </button>
+              )}
             </div>
-            <SideBar />
-        </>
-    )
+          </>
+        )}
+
+        <div className="credit-card-pay-container">
+          {/* start step 2 getValue */}
+          <PayButton
+            paymentCtaEnabledColor={paymentCtaEnabledColor.getValue()}
+            paymentCtaDisabledColor={paymentCtaDisabledColor.getValue()}
+            disabled={!hasValidCreditCard}
+            onClick={() => {
+              onPaymentSuccess("Credit-card");
+            }}
+          >
+            {paymentCtaPrefixText.getValue()} {paymentAmount} $
+          </PayButton>
+          {/* end step 2 getValue */}
+        </div>
+
+        <div className="alert alert-warning alert-box">
+          When modifications are made on the platform, this can take up to 60
+          seconds to display on the page while the servers synchronize.
+        </div>
+      </div>
+      <SideBar />
+    </>
+  );
 }
 
-export default Payment
+export default Payment;
