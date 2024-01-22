@@ -1,6 +1,6 @@
-/*start step 1 import*/
+/* start step 1 import */
 import { FlagshipProvider } from "@flagship.io/react-sdk";
-/*end step 1 import*/
+/* end step 1 import */
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Loader from "./components/loader/Loader";
