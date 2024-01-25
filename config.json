@@ -2,8 +2,8 @@
     {
         "fileName": "src/App.js",
         "regex": {
-            "step 1 import": "\\/\\* start step 1 import \\*\\/[\\s\\S]*?\\/\\* end step 1 import \\*\\/",
-            "step 1 block": "\\{\\/\\* start step 1 block \\*\\/\\}([\\s\\S]*?)\\{\\/\\* end step 1 block \\*\\/\\}"
+            "step 1 import": "\\/\\* start step 1 import \\*\/([\\s\\S]*?)\/\\* end step 1 import \\*\/",
+            "step 1 block": "\\{\/\\* start step 1 block \\*\/\\}([\\s\\S]*?)\\{\/\\* end step 1 block \\*\/\\}"
         }
     }
 ]
