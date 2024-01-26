@@ -10,7 +10,7 @@
         "fileName": "src/Pages/Payment/Payment.js",
         "regex": {
             "step 2 import": "\\/\\* start step 2 import \\*\\/([\\s\\S]*?)\\/\\* end step 2 import \\*\\/",
-            "step 2 useFsFlag": "\\{\\/\\* start step 2 useFsFlag \\*\\/\\}([\\s\\S]*?)\\{\\/\\* end step 2 useFsFlag \\*\\/\\}",
+            "step 2 useFsFlag": "\\/\\* start step 2 useFsFlag \\*\\/([\\s\\S]*?)\\/\\* end step 2 useFsFlag \\*\\/",
             "step 2 getValue": "\\{\\/\\* start step 2 getValue \\*\\/\\}([\\s\\S]*?)\\{\\/\\* end step 2 getValue \\*\\/\\}"
         }
     }
