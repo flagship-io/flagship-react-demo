@@ -3,7 +3,7 @@
         "fileName": "src/App.js",
         "usingSdkSteps": [
             {
-                "order": 2,
+                "order": 1,
                 "description": "1 - Initializing your SDK",
                 "codeRegexPatterns": [
                     "\\/\\* start step 1 import \\*\\/([\\s\\S]*?)\\/\\* end step 1 import \\*\\/",
@@ -16,7 +16,7 @@
         "fileName": "src/Pages/Payment/Payment.js",
         "usingSdkSteps": [
             {
-                "order": 1,
+                "order": 2,
                 "description": "3 - Fetching the flags information from the DecisionAPI",
                 "codeRegexPatterns": [
                     "\\/\\* start step 2 import \\*\\/([\\s\\S]*?)\\/\\* end step 2 import \\*\/",
