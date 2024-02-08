@@ -1,3 +1,3 @@
-// start install
+/* start install */
 yarn add @flagship.io/js-sdk
-// end install
+/* end install */
