@@ -6,7 +6,8 @@
             "description": "Install SDK",
             "codeRegexPatterns": [
                 "\\/\\* start install \\*\\/([\\s\\S]*?)\\/\\* end install \\*\\/"
-            ]
+            ],
+            "language": "shell"
         }
     ],
     "useSdkSteps": [
@@ -17,7 +18,8 @@
             "codeRegexPatterns": [
                 "\\/\\* start step 1 import \\*\\/([\\s\\S]*?)\\/\\* end step 1 import \\*\\/",
                 "\\{\/\\* start step 1 block \\*\\/\\}([\\s\\S]*?)\\{\/\\* end step 1 block \\*\/\\}"
-            ]
+            ],
+            "language": "jsx"
         },
         {
             "fileName": "src/Pages/Payment/Payment.js",
@@ -27,7 +29,8 @@
                 "\\/\\* start step 2 import \\*\\/([\\s\\S]*?)\\/\\* end step 2 import \\*\/",
                 "\\/\\* start step 2 useFsFlag \\*\\/([\\s\\S]*?)\\/\\* end step 2 useFsFlag \\*\/",
                 "\\{\\/\\* start step 2 getValue \\*\\/\\}([\\s\\S]*?)\\{\\/\\* end step 2 getValue \\*\\/\\}"
-            ]
+            ],
+            "language": "jsx"
         }
     ]
 }
