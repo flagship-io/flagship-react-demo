@@ -1,29 +1,33 @@
-[
-    {
-        "fileName": "src/App.js",
-        "usingSdkSteps": [
-            {
-                "order": 1,
-                "description": "1 - Initializing your SDK",
-                "codeRegexPatterns": [
-                    "\\/\\* start step 1 import \\*\\/([\\s\\S]*?)\\/\\* end step 1 import \\*\\/",
-                    "\\{\/\\* start step 1 block \\*\\/\\}([\\s\\S]*?)\\{\/\\* end step 1 block \\*\\/\\}"
-                ]
-            }
-        ]
-    },
-    {
-        "fileName": "src/Pages/Payment/Payment.js",
-        "usingSdkSteps": [
-            {
-                "order": 2,
-                "description": "3 - Fetching the flags information from the DecisionAPI",
-                "codeRegexPatterns": [
-                    "\\/\\* start step 2 import \\*\\/([\\s\\S]*?)\\/\\* end step 2 import \\*\/",
-                    "\\/\\* start step 2 useFsFlag \\*\\/([\\s\\S]*?)\\/\\* end step 2 useFsFlag \\*\/",
-                    "\\{\\/\\* start step 2 getValue \\*\\/\\}([\\s\\S]*?)\\{\\/\\* end step 2 getValue \\*\\/\\}"
-                ]
-            }
-        ]
-    }
-]
+{
+    "installSdkSteps": [
+        {
+            "fileName": "install.txt",
+            "order": 1,
+            "description": "Install SDK",
+            "codeRegexPatterns": [
+                "\\/\\* start install \\*\\/([\\s\\S]*?)\\/\\* end install \\*\\/"
+            ]
+        }
+    ],
+    "useSdkSteps": [
+        {
+            "fileName": "src/App.js",
+            "order": 1,
+            "description": "1 - Importing the SDK",
+            "codeRegexPatterns": [
+                "\\/\\* start step 1 import \\*\\/([\\s\\S]*?)\\/\\* end step 1 import \\*\\/",
+                "\\{\/\\* start step 1 block \\*\\/\\}([\\s\\S]*?)\\{\/\\* end step 1 block \\*\/\\}"
+            ]
+        },
+        {
+            "fileName": "src/Pages/Payment/Payment.js",
+            "order": 2,
+            "description": "3 - Fetching the flags information from the DecisionAPI",
+            "codeRegexPatterns": [
+                "\\/\\* start step 2 import \\*\\/([\\s\\S]*?)\\/\\* end step 2 import \\*\/",
+                "\\/\\* start step 2 useFsFlag \\*\\/([\\s\\S]*?)\\/\\* end step 2 useFsFlag \\*\/",
+                "\\{\\/\\* start step 2 getValue \\*\\/\\}([\\s\\S]*?)\\{\\/\\* end step 2 getValue \\*\\/\\}"
+            ]
+        }
+    ]
+}

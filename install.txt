@@ -1,0 +1,3 @@
+// start install
+yarn add @flagship.io/js-sdk
+// end install
