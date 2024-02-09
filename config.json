@@ -1,5 +1,5 @@
 {
-    "installSdkSteps": [
+    "sdkInstallSteps": [
         {
             "fileName": "install.txt",
             "order": 1,
@@ -10,7 +10,7 @@
             "language": "shell"
         }
     ],
-    "useSdkSteps": [
+    "sdkUseSteps": [
         {
             "fileName": "src/App.js",
             "order": 1,
