@@ -30,8 +30,8 @@ function App() {
     <appContext.Provider value={{ fsData, setFsData: setFsData }}>
       {/* start step 1 block */}
       <FlagshipProvider
-        envId={"<API_KEY>"}
-        apiKey={"<ENV_ID>"}
+        envId={"<ENV_ID>"}
+        apiKey={"<API_KEY>"}
         visitorData={{
           id: fsData.visitorId, // if empty, the SDK will generate one
           context: {
