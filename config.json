@@ -7,7 +7,7 @@
             "codeRegexPatterns": [
                 "\\/\\* start install \\*\\/([\\s\\S]*?)\\/\\* end install \\*\\/"
             ],
-            "rawCode": "yarn add @flagship.io/js-sdk",
+            "rawCode": "npm install flagship-js-sdk",
             "language": "shell"
         }
     ],
