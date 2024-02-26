@@ -1,13 +1,18 @@
 {
     "sdkInstallSteps": [
         {
-            "fileName": "install.txt",
             "order": 1,
+            "description": "Install SDK",
+            "rawCode": "npm install flagship-js-sdk",
+            "language": "shell"
+        },
+        {
+            "fileName": "install.txt",
+            "order": 2,
             "description": "Install SDK",
             "codeRegexPatterns": [
                 "\\/\\* start install \\*\\/([\\s\\S]*?)\\/\\* end install \\*\\/"
             ],
-            "rawCode": "npm install flagship-js-sdk",
             "language": "shell"
         }
     ],
